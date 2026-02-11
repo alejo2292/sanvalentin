@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¿Serás mi San Valentín?</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .buttons {
+      display: flex;
+      gap: 2rem;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+    #no {
+      background: #888;
+      color: white;
+    }
+    #invitation {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      max-width: 400px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>¿Quieres ser mi San Valentín?</h1>
+
+  <div class="buttons">
+    <button id="yes">Sí</button>
+    <button id="no">No</button>
+  </div>
+
+  <div id="invitation">
+    <p><strong>Cita el 13 de febrero a las 10:00 am</strong></p>
+    <p>Verse hermosa como siempre, te amo. ❤️</p>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const invitation = document.getElementById("invitation");
+
+    let sizeFactor = 1.0;
+
+    noBtn.addEventListener("click", () => {
+      sizeFactor += 0.2;
+      yesBtn.style.transform = `scale(${sizeFactor})`;
+      yesBtn.style.zIndex = "10"; // para que quede encima
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".buttons").style.display = "none";
+      invitation.style.display = "block";
+    });
+  </script>
+</body>
+</html>
